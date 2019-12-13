@@ -35,43 +35,62 @@ print("Total Months: " + str(len(months)- 1))
 
 total_profit = 0
 previous_profit = 867884
-sum_change = 0
-#greatest_increase =
-#greatest_decrease = 
+previous_change = 0
+greatest_increase_month = ""
+#greatest_increase_month = largest value in profit_changes
+#greatest_decrease_month = smallest value in profit_changes
 profit_change = 0
 profit_changes = []
+months = []
+
 
 #Loop through rows
 for row in reader:
 	
 	#Calculate the total profit - profit[0] + profit[1] + profit[2] + ...
 	total_profit += int(row[1])	
-		
-	#total_profit = total_profit + int(row['Profit/Losses']) How do I get this value out?
+			
+	#Calculate profit change
+	profit_change = int(row[1]) - int(previous_profit)
+	print(profit_change)
+	profit_changes.append(profit_change)
+	months.append(row[0])
 	
-	#Calculate average change
-	profit_change = int(row[1]) - previous_profit
+	previous_profit = row[1]
+	#min_month = 
+	#max_month = 
 	
-	#Calculate sum_change
-	sum_change += profit_change
+	#sorting a list in python 
+	#
 	
-	#profit_changes.append(int(row[1]))
+	#compare current change with previous
+	#Help!
+
+for change in profit_changes:
+	if profit_change > previous_change:
+		greatest_increase_month=(row[0])			
 	
 	previous_profit = int(row[1])
-	#Calculate profit change: profit[1]- profit[0]
-	#average change = sum(profit_changes)/len(profit_changes)
+	
+	#Calculate profit change month profit[1]- profit[0]
 	
 	
-	#Calculate greatest increase in profits
-	#compare greatest increase to profit change
-	#maximum of profit_changes
-	#profit_changes.append(int(row[1]))
+#Calculate average change 
+average_change = sum(profit_changes)/(len(profit_changes)-1)
 
-	#Calculate greatest decrease in profits
-	#compare greatest_decrease to profit_change
+#Keep track of months
+#index of min month, index max month	
 	
-print("Total Profits: " +str(total_profit))
-print("Average Change: ")
-print("Greatest Increase in Profits: ")
-print("Greatest Decrease in Profits: ")
+#compare greatest increase to profit change
+#maximum of profit_changes
+#if profit_change[n] > profit_change[n-1]
+	#then greatest_profit_month
+
+#Calculate greatest decrease in profits
+#compare greatest_decrease to profit_change
+ 	
+print("Total: " +str(total_profit))
+print("Average Change: $" + f"{average_change:.2f}")
+print("Greatest Increase in Profits: " + greatest_increase_month +  "($" + str(max(profit_changes)) + ")")
+print("Greatest Decrease in Profits: " + "($" + str(min(profit_changes)) + ")")
 
